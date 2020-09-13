@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.1259
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Monotone", "Monotone\Monotone.csproj", "{E7783270-3B04-4A38-BD8D-87704DE13508}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug x64|Any CPU = Debug x64|Any CPU
+		Debug x64|x64 = Debug x64|x64
+		Release x64|Any CPU = Release x64|Any CPU
+		Release x64|x64 = Release x64|x64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E7783270-3B04-4A38-BD8D-87704DE13508}.Debug x64|Any CPU.ActiveCfg = Debug|Any CPU
+		{E7783270-3B04-4A38-BD8D-87704DE13508}.Debug x64|Any CPU.Build.0 = Debug|Any CPU
+		{E7783270-3B04-4A38-BD8D-87704DE13508}.Debug x64|x64.ActiveCfg = Debug|x64
+		{E7783270-3B04-4A38-BD8D-87704DE13508}.Debug x64|x64.Build.0 = Debug|x64
+		{E7783270-3B04-4A38-BD8D-87704DE13508}.Release x64|Any CPU.ActiveCfg = Release|Any CPU
+		{E7783270-3B04-4A38-BD8D-87704DE13508}.Release x64|Any CPU.Build.0 = Release|Any CPU
+		{E7783270-3B04-4A38-BD8D-87704DE13508}.Release x64|x64.ActiveCfg = Release|x64
+		{E7783270-3B04-4A38-BD8D-87704DE13508}.Release x64|x64.Build.0 = Release|x64
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {9C0FD12B-57E5-4B17-BCF2-807197160A2E}
+	EndGlobalSection
+EndGlobal
