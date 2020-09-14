@@ -13,23 +13,23 @@ namespace Monotone
     /// </summary>
     public class TestFile1
     {
-        public TestFile1()
-        {
-
-        }
-
         public async void testFunc()
         {
             // Set-up the Azure speech configuration with our subscription info and enable dictation capabilities
             var speechConfig = SpeechConfig.FromSubscription("b8305ebbfce64754a0150547a076a0be", "westus");
             speechConfig.EnableDictation();
+            speechConfig.SetProfanity(ProfanityOption.Raw);
 
-            // Set-up the microphone using AudioConfig and initialize the SpeechRecognizer API
+            // Set-up the microphone using AudioConfig
             var audioConfig = AudioConfig.FromDefaultMicrophoneInput();
+
+            // Initialize the SpeechRecognizer API
             var recognizer = new SpeechRecognizer(speechConfig, audioConfig);
 
             // Declar a TaskCompletionSource to help shutdown the continuous speech processing later
             var stopRecognition = new TaskCompletionSource<int>();
+
+            
 
             // Recognizer Event-Based handeling
             #region Recognizer Event-Based Handeling

@@ -18,7 +18,7 @@ namespace Monotone
             //Application.SetCompatibleTextRenderingDefault(false);
             //Application.Run(new Form1());
 
-            var alpha = new TestFile1();
+            var alpha = new TestFile3();
 
             alpha.testFunc();
 
