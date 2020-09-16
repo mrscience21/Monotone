@@ -16,6 +16,9 @@ namespace Monotone
             // Define Output Path and Create a new WaveInEvent
             var outputFilePath = @"C:\Users\Joe\source\repos\Monotone\Monotone\bin\x64\Debug\audio.wav";
             var waveInEvent = new WaveInEvent();
+            waveInEvent.DeviceNumber = 0;
+
+            var bufferedWaveProvider = new BufferedWaveProvider(new WaveFormat(8000, 1));
 
             // Prepare the fileWriter
             WaveFileWriter fileWriter = new WaveFileWriter(outputFilePath, waveInEvent.WaveFormat);
@@ -27,10 +30,12 @@ namespace Monotone
             speechConfig.OutputFormat = OutputFormat.Detailed;
 
             // Set-Up Audio Configuration using Audio Callback method for NAudio Capture
-            AudioCallback audioCallback = new AudioCallback(ref waveInEvent, waveInEvent.WaveFormat.BitsPerSample);
+            AudioCallback audioCallback = new AudioCallback(ref waveInEvent, waveInEvent.WaveFormat.BitsPerSample, ref bufferedWaveProvider);
             //var audioStreamCallback = AudioInputStream.CreatePullStream(audioCallback, AudioStreamFormat.GetDefaultInputFormat());
             var audioStreamCallback = AudioInputStream.CreatePullStream(audioCallback,
-                AudioStreamFormat.GetWaveFormatPCM((uint)waveInEvent.WaveFormat.SampleRate, (byte)waveInEvent.WaveFormat.BitsPerSample, (byte)waveInEvent.WaveFormat.Channels));
+                                                                        AudioStreamFormat.GetWaveFormatPCM((uint)waveInEvent.WaveFormat.SampleRate, 
+                                                                                                            (byte)waveInEvent.WaveFormat.BitsPerSample, 
+                                                                                                            (byte)waveInEvent.WaveFormat.Channels));
 
             var audioConfig = AudioConfig.FromStreamInput(audioStreamCallback);
 
@@ -58,6 +63,7 @@ namespace Monotone
                 {
                     Console.WriteLine($"NOMATCH: Speech could not be recognized.");
                     Console.WriteLine($"NOMATCH: Detail ={NoMatchDetails.FromResult(e.Result).Reason}");
+                    Console.WriteLine($"NOMATCH: Duration ={e.Result.Duration}");
                 }
             };
 
@@ -87,6 +93,7 @@ namespace Monotone
             {
                 // Use callback to send recorded data for analysis via Recognizer
                 //audioCallback.Read(a.Buffer, (uint)a.BytesRecorded);
+                bufferedWaveProvider.AddSamples(a.Buffer, 0, a.BytesRecorded);
 
                 // Then Write the data
                 fileWriter.Write(a.Buffer, 0, a.BytesRecorded);
@@ -133,32 +140,33 @@ namespace Monotone
     public class AudioCallback : PullAudioInputStreamCallback
     {
         WaveInEvent waveInEvent;
+        BufferedWaveProvider bufferedWaveProvider;
         byte[] dataBuffer;
         uint size;
 
-        public AudioCallback(ref WaveInEvent waveInEvent, int bufferSize)
+        public AudioCallback(ref WaveInEvent waveInEvent, int bufferSize, ref BufferedWaveProvider bufferedWaveProvider)
         {
             bufferSize *= 100;
 
+            this.bufferedWaveProvider = bufferedWaveProvider;
             this.waveInEvent = waveInEvent;
             this.size = (uint)bufferSize;
             this.dataBuffer = new byte[bufferSize];
 
             Array.Clear(dataBuffer, 0, bufferSize);
 
-            waveInEvent.DataAvailable += (s, a) =>
-            {
-                dataBuffer = a.Buffer;
-                size = (uint)a.BytesRecorded;
-            };
+            //waveInEvent.DataAvailable += (s, a) =>
+            //{
+            //    dataBuffer = a.Buffer;
+            //    //dataBuffer = Enumerable.Repeat(0, a.BytesRecorded).Select(i => new Random().Next(0, 255)).ToArray().Select(i => (byte)i).ToArray();
+
+            //    size = (uint)a.BytesRecorded;
+            //};
         }
 
         public override int Read(byte[] dataBuffer, uint size)
         {
-            dataBuffer = this.dataBuffer;
-            size = this.size;
-
-            return dataBuffer.Length;
+            return bufferedWaveProvider.Read(dataBuffer, 0, (int)size);
         }
     }
 }

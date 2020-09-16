@@ -13,7 +13,7 @@ namespace Monotone
 
         public void testFunc()
         {
-            var waveIn = new WaveIn();
+            Console.WriteLine(WaveInEvent.GetCapabilities(0).Channels);
 
         }
     }

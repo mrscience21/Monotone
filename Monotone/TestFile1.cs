@@ -44,6 +44,7 @@ namespace Monotone
                 if(e.Result.Reason == ResultReason.RecognizedSpeech)
                 {
                     Console.WriteLine($"RECOGNIZED: Text ={e.Result.Text}");
+                    Console.WriteLine($"RECOGNIZED: Duration ={e.Result.Duration}");
                 }
                 else if (e.Result.Reason == ResultReason.NoMatch)
                 {
