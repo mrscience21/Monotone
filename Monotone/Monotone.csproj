@@ -88,6 +88,7 @@
     <Compile Include="TestFile1.cs" />
     <Compile Include="TestFile2.cs" />
     <Compile Include="TestFile3.cs" />
+    <Compile Include="TestFile4.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>

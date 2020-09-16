@@ -27,8 +27,10 @@ namespace Monotone
             speechConfig.OutputFormat = OutputFormat.Detailed;
 
             // Set-Up Audio Configuration using Audio Callback method for NAudio Capture
-            AudioCallback audioCallback = new AudioCallback();
-            var audioStreamCallback = new PullAudioInputStream(audioCallback, AudioStreamFormat.GetDefaultInputFormat());
+            AudioCallback audioCallback = new AudioCallback(ref waveInEvent, waveInEvent.WaveFormat.BitsPerSample);
+            //var audioStreamCallback = AudioInputStream.CreatePullStream(audioCallback, AudioStreamFormat.GetDefaultInputFormat());
+            var audioStreamCallback = AudioInputStream.CreatePullStream(audioCallback,
+                AudioStreamFormat.GetWaveFormatPCM((uint)waveInEvent.WaveFormat.SampleRate, (byte)waveInEvent.WaveFormat.BitsPerSample, (byte)waveInEvent.WaveFormat.Channels));
 
             var audioConfig = AudioConfig.FromStreamInput(audioStreamCallback);
 
@@ -74,6 +76,7 @@ namespace Monotone
             recognizer.SessionStopped += (s, e) =>
             {
                 Console.WriteLine("\n   Session Stopped Event.");
+                
                 stopRecognition.TrySetResult(0);
             };
             #endregion
@@ -83,7 +86,7 @@ namespace Monotone
             waveInEvent.DataAvailable += (s, a) =>
             {
                 // Use callback to send recorded data for analysis via Recognizer
-                audioCallback.Read(a.Buffer, (uint)a.BytesRecorded);
+                //audioCallback.Read(a.Buffer, (uint)a.BytesRecorded);
 
                 // Then Write the data
                 fileWriter.Write(a.Buffer, 0, a.BytesRecorded);
@@ -129,9 +132,33 @@ namespace Monotone
 
     public class AudioCallback : PullAudioInputStreamCallback
     {
+        WaveInEvent waveInEvent;
+        byte[] dataBuffer;
+        uint size;
+
+        public AudioCallback(ref WaveInEvent waveInEvent, int bufferSize)
+        {
+            bufferSize *= 100;
+
+            this.waveInEvent = waveInEvent;
+            this.size = (uint)bufferSize;
+            this.dataBuffer = new byte[bufferSize];
+
+            Array.Clear(dataBuffer, 0, bufferSize);
+
+            waveInEvent.DataAvailable += (s, a) =>
+            {
+                dataBuffer = a.Buffer;
+                size = (uint)a.BytesRecorded;
+            };
+        }
+
         public override int Read(byte[] dataBuffer, uint size)
         {
-            return (int)size;
+            dataBuffer = this.dataBuffer;
+            size = this.size;
+
+            return dataBuffer.Length;
         }
     }
 }

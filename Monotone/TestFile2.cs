@@ -42,6 +42,11 @@ namespace Monotone
 
             waveInEvent.RecordingStopped += (s, a) => 
             {
+                Console.WriteLine($"Sampling Rate: {waveInEvent.WaveFormat.SampleRate}");
+                Console.WriteLine($"Bits Per Sample: {waveInEvent.WaveFormat.BitsPerSample}");
+                Console.WriteLine($"Channels: {waveInEvent.WaveFormat.Channels}");
+                Console.WriteLine($"Encoding: {waveInEvent.WaveFormat.Encoding}");
+
                 fileWriter?.Dispose();
                 fileWriter = null;
             };
