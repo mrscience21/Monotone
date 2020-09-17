@@ -1,6 +1,6 @@
 ﻿namespace Monotone
 {
-    partial class Form1
+    partial class MainWindow
     {
         /// <summary>
         /// Required designer variable.
@@ -79,9 +79,10 @@
             // quit_ToolStripMenuItem
             // 
             this.quit_ToolStripMenuItem.Name = "quit_ToolStripMenuItem";
-            this.quit_ToolStripMenuItem.Size = new System.Drawing.Size(97, 22);
+            this.quit_ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.quit_ToolStripMenuItem.Text = "Quit";
             this.quit_ToolStripMenuItem.ToolTipText = "Exit the application";
+            this.quit_ToolStripMenuItem.Click += new System.EventHandler(this.quit_ToolStripMenuItem_Click);
             // 
             // window_splitContainer
             // 
@@ -99,20 +100,22 @@
             // monotone_RecordTranscribe1
             // 
             this.monotone_RecordTranscribe1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.monotone_RecordTranscribe1.FilePath = "label1";
             this.monotone_RecordTranscribe1.Location = new System.Drawing.Point(0, 0);
             this.monotone_RecordTranscribe1.Name = "monotone_RecordTranscribe1";
             this.monotone_RecordTranscribe1.Size = new System.Drawing.Size(500, 430);
             this.monotone_RecordTranscribe1.TabIndex = 0;
+            this.monotone_RecordTranscribe1.TimeIndex = new System.DateTime(((long)(0)));
             // 
-            // Form1
+            // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 461);
             this.Controls.Add(this.window_tableLayoutPanel);
             this.MainMenuStrip = this.window_menuStrip;
-            this.Name = "Form1";
-            this.Text = "Form1";
+            this.Name = "MainWindow";
+            this.Text = "Monotone";
             this.window_tableLayoutPanel.ResumeLayout(false);
             this.window_tableLayoutPanel.PerformLayout();
             this.window_menuStrip.ResumeLayout(false);

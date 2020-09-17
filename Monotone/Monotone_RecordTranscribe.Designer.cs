@@ -29,11 +29,11 @@
         private void InitializeComponent()
         {
             this.control_tableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
-            this.audioControl_tableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
+            this.audioSourceAndControl_tableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.browse_button = new System.Windows.Forms.Button();
             this.filePath_label = new System.Windows.Forms.Label();
             this.audioControlData_tableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.audioControls_tableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.record_button = new System.Windows.Forms.Button();
             this.play_button = new System.Windows.Forms.Button();
             this.timeIndex_label = new System.Windows.Forms.Label();
@@ -47,9 +47,9 @@
             this.transcript_richTextBox = new System.Windows.Forms.RichTextBox();
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.control_tableLayoutPanel.SuspendLayout();
-            this.audioControl_tableLayoutPanel.SuspendLayout();
+            this.audioSourceAndControl_tableLayoutPanel.SuspendLayout();
             this.audioControlData_tableLayoutPanel.SuspendLayout();
-            this.tableLayoutPanel1.SuspendLayout();
+            this.audioControls_tableLayoutPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.audio_trackBar)).BeginInit();
             this.transcriptControl_tableLayoutPanel.SuspendLayout();
             this.SuspendLayout();
@@ -58,7 +58,7 @@
             // 
             this.control_tableLayoutPanel.ColumnCount = 1;
             this.control_tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.control_tableLayoutPanel.Controls.Add(this.audioControl_tableLayoutPanel, 0, 0);
+            this.control_tableLayoutPanel.Controls.Add(this.audioSourceAndControl_tableLayoutPanel, 0, 0);
             this.control_tableLayoutPanel.Controls.Add(this.transcriptControl_tableLayoutPanel, 0, 1);
             this.control_tableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.control_tableLayoutPanel.Location = new System.Drawing.Point(0, 0);
@@ -69,25 +69,25 @@
             this.control_tableLayoutPanel.Size = new System.Drawing.Size(500, 700);
             this.control_tableLayoutPanel.TabIndex = 0;
             // 
-            // audioControl_tableLayoutPanel
+            // audioSourceAndControl_tableLayoutPanel
             // 
-            this.audioControl_tableLayoutPanel.ColumnCount = 3;
-            this.audioControl_tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.audioControl_tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 75F));
-            this.audioControl_tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 75F));
-            this.audioControl_tableLayoutPanel.Controls.Add(this.browse_button, 1, 0);
-            this.audioControl_tableLayoutPanel.Controls.Add(this.filePath_label, 0, 0);
-            this.audioControl_tableLayoutPanel.Controls.Add(this.audioControlData_tableLayoutPanel, 0, 1);
-            this.audioControl_tableLayoutPanel.Controls.Add(this.newFile_button, 2, 0);
-            this.audioControl_tableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.audioControl_tableLayoutPanel.Location = new System.Drawing.Point(0, 0);
-            this.audioControl_tableLayoutPanel.Margin = new System.Windows.Forms.Padding(0);
-            this.audioControl_tableLayoutPanel.Name = "audioControl_tableLayoutPanel";
-            this.audioControl_tableLayoutPanel.RowCount = 2;
-            this.audioControl_tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
-            this.audioControl_tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.audioControl_tableLayoutPanel.Size = new System.Drawing.Size(500, 150);
-            this.audioControl_tableLayoutPanel.TabIndex = 1;
+            this.audioSourceAndControl_tableLayoutPanel.ColumnCount = 3;
+            this.audioSourceAndControl_tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.audioSourceAndControl_tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 75F));
+            this.audioSourceAndControl_tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 75F));
+            this.audioSourceAndControl_tableLayoutPanel.Controls.Add(this.browse_button, 1, 0);
+            this.audioSourceAndControl_tableLayoutPanel.Controls.Add(this.filePath_label, 0, 0);
+            this.audioSourceAndControl_tableLayoutPanel.Controls.Add(this.audioControlData_tableLayoutPanel, 0, 1);
+            this.audioSourceAndControl_tableLayoutPanel.Controls.Add(this.newFile_button, 2, 0);
+            this.audioSourceAndControl_tableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.audioSourceAndControl_tableLayoutPanel.Location = new System.Drawing.Point(0, 0);
+            this.audioSourceAndControl_tableLayoutPanel.Margin = new System.Windows.Forms.Padding(0);
+            this.audioSourceAndControl_tableLayoutPanel.Name = "audioSourceAndControl_tableLayoutPanel";
+            this.audioSourceAndControl_tableLayoutPanel.RowCount = 2;
+            this.audioSourceAndControl_tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
+            this.audioSourceAndControl_tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.audioSourceAndControl_tableLayoutPanel.Size = new System.Drawing.Size(500, 150);
+            this.audioSourceAndControl_tableLayoutPanel.TabIndex = 1;
             // 
             // browse_button
             // 
@@ -119,10 +119,10 @@
             // audioControlData_tableLayoutPanel
             // 
             this.audioControlData_tableLayoutPanel.ColumnCount = 2;
-            this.audioControl_tableLayoutPanel.SetColumnSpan(this.audioControlData_tableLayoutPanel, 3);
+            this.audioSourceAndControl_tableLayoutPanel.SetColumnSpan(this.audioControlData_tableLayoutPanel, 3);
             this.audioControlData_tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 125F));
             this.audioControlData_tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.audioControlData_tableLayoutPanel.Controls.Add(this.tableLayoutPanel1, 0, 1);
+            this.audioControlData_tableLayoutPanel.Controls.Add(this.audioControls_tableLayoutPanel, 0, 1);
             this.audioControlData_tableLayoutPanel.Controls.Add(this.entryTitle_textBox, 0, 0);
             this.audioControlData_tableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.audioControlData_tableLayoutPanel.Location = new System.Drawing.Point(0, 25);
@@ -134,32 +134,32 @@
             this.audioControlData_tableLayoutPanel.Size = new System.Drawing.Size(500, 125);
             this.audioControlData_tableLayoutPanel.TabIndex = 2;
             // 
-            // tableLayoutPanel1
+            // audioControls_tableLayoutPanel
             // 
-            this.tableLayoutPanel1.ColumnCount = 5;
-            this.audioControlData_tableLayoutPanel.SetColumnSpan(this.tableLayoutPanel1, 2);
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 63F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 63F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 63F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 63F));
-            this.tableLayoutPanel1.Controls.Add(this.record_button, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.play_button, 1, 0);
-            this.tableLayoutPanel1.Controls.Add(this.timeIndex_label, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.rewind_button, 2, 1);
-            this.tableLayoutPanel1.Controls.Add(this.fastforward_button, 4, 1);
-            this.tableLayoutPanel1.Controls.Add(this.audio_trackBar, 3, 1);
-            this.tableLayoutPanel1.Controls.Add(this.audio_waveViewer, 2, 0);
-            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 30);
-            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(0);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 2;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(500, 95);
-            this.tableLayoutPanel1.TabIndex = 0;
+            this.audioControls_tableLayoutPanel.ColumnCount = 5;
+            this.audioControlData_tableLayoutPanel.SetColumnSpan(this.audioControls_tableLayoutPanel, 2);
+            this.audioControls_tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 63F));
+            this.audioControls_tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 63F));
+            this.audioControls_tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 63F));
+            this.audioControls_tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.audioControls_tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 63F));
+            this.audioControls_tableLayoutPanel.Controls.Add(this.record_button, 0, 0);
+            this.audioControls_tableLayoutPanel.Controls.Add(this.play_button, 1, 0);
+            this.audioControls_tableLayoutPanel.Controls.Add(this.timeIndex_label, 0, 1);
+            this.audioControls_tableLayoutPanel.Controls.Add(this.rewind_button, 2, 1);
+            this.audioControls_tableLayoutPanel.Controls.Add(this.fastforward_button, 4, 1);
+            this.audioControls_tableLayoutPanel.Controls.Add(this.audio_trackBar, 3, 1);
+            this.audioControls_tableLayoutPanel.Controls.Add(this.audio_waveViewer, 2, 0);
+            this.audioControls_tableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.audioControls_tableLayoutPanel.Location = new System.Drawing.Point(0, 30);
+            this.audioControls_tableLayoutPanel.Margin = new System.Windows.Forms.Padding(0);
+            this.audioControls_tableLayoutPanel.Name = "audioControls_tableLayoutPanel";
+            this.audioControls_tableLayoutPanel.RowCount = 2;
+            this.audioControls_tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.audioControls_tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.audioControls_tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.audioControls_tableLayoutPanel.Size = new System.Drawing.Size(500, 95);
+            this.audioControls_tableLayoutPanel.TabIndex = 0;
             // 
             // record_button
             // 
@@ -170,6 +170,7 @@
             this.record_button.Size = new System.Drawing.Size(57, 59);
             this.record_button.TabIndex = 0;
             this.record_button.UseVisualStyleBackColor = true;
+            this.record_button.Click += new System.EventHandler(this.record_button_Click);
             // 
             // play_button
             // 
@@ -180,12 +181,13 @@
             this.play_button.Size = new System.Drawing.Size(57, 59);
             this.play_button.TabIndex = 1;
             this.play_button.UseVisualStyleBackColor = true;
+            this.play_button.Click += new System.EventHandler(this.play_button_Click);
             // 
             // timeIndex_label
             // 
             this.timeIndex_label.AutoSize = true;
             this.timeIndex_label.BackColor = System.Drawing.Color.White;
-            this.tableLayoutPanel1.SetColumnSpan(this.timeIndex_label, 2);
+            this.audioControls_tableLayoutPanel.SetColumnSpan(this.timeIndex_label, 2);
             this.timeIndex_label.Dock = System.Windows.Forms.DockStyle.Fill;
             this.timeIndex_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.timeIndex_label.Location = new System.Drawing.Point(3, 65);
@@ -230,7 +232,7 @@
             // 
             // audio_waveViewer
             // 
-            this.tableLayoutPanel1.SetColumnSpan(this.audio_waveViewer, 3);
+            this.audioControls_tableLayoutPanel.SetColumnSpan(this.audio_waveViewer, 3);
             this.audio_waveViewer.Dock = System.Windows.Forms.DockStyle.Fill;
             this.audio_waveViewer.Location = new System.Drawing.Point(126, 0);
             this.audio_waveViewer.Margin = new System.Windows.Forms.Padding(0);
@@ -305,12 +307,12 @@
             this.Name = "Monotone_RecordTranscribe";
             this.Size = new System.Drawing.Size(500, 700);
             this.control_tableLayoutPanel.ResumeLayout(false);
-            this.audioControl_tableLayoutPanel.ResumeLayout(false);
-            this.audioControl_tableLayoutPanel.PerformLayout();
+            this.audioSourceAndControl_tableLayoutPanel.ResumeLayout(false);
+            this.audioSourceAndControl_tableLayoutPanel.PerformLayout();
             this.audioControlData_tableLayoutPanel.ResumeLayout(false);
             this.audioControlData_tableLayoutPanel.PerformLayout();
-            this.tableLayoutPanel1.ResumeLayout(false);
-            this.tableLayoutPanel1.PerformLayout();
+            this.audioControls_tableLayoutPanel.ResumeLayout(false);
+            this.audioControls_tableLayoutPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.audio_trackBar)).EndInit();
             this.transcriptControl_tableLayoutPanel.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -320,14 +322,13 @@
         #endregion
 
         private System.Windows.Forms.TableLayoutPanel control_tableLayoutPanel;
-        private System.Windows.Forms.TableLayoutPanel audioControl_tableLayoutPanel;
+        private System.Windows.Forms.TableLayoutPanel audioSourceAndControl_tableLayoutPanel;
         private System.Windows.Forms.Button browse_button;
         private System.Windows.Forms.Label filePath_label;
         private System.Windows.Forms.TableLayoutPanel transcriptControl_tableLayoutPanel;
-        private System.Windows.Forms.RichTextBox transcript_richTextBox;
         private System.Windows.Forms.OpenFileDialog openFileDialog;
         private System.Windows.Forms.TableLayoutPanel audioControlData_tableLayoutPanel;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.TableLayoutPanel audioControls_tableLayoutPanel;
         private System.Windows.Forms.Button record_button;
         private System.Windows.Forms.Button play_button;
         private System.Windows.Forms.Label timeIndex_label;
@@ -337,5 +338,6 @@
         private System.Windows.Forms.TrackBar audio_trackBar;
         private NAudio.Gui.WaveViewer audio_waveViewer;
         private System.Windows.Forms.TextBox entryTitle_textBox;
+        public System.Windows.Forms.RichTextBox transcript_richTextBox;
     }
 }
