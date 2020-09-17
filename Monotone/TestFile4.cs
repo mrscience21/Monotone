@@ -9,8 +9,6 @@ namespace Monotone
 {
     class TestFile4
     {
-        private WaveFileWriter fileWriter;
-
         public void testFunc()
         {
             Console.WriteLine(WaveInEvent.GetCapabilities(0).Channels);

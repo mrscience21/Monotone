@@ -30,7 +30,7 @@ namespace Monotone
             speechConfig.OutputFormat = OutputFormat.Detailed;
 
             // Set-Up Audio Configuration using Audio Callback method for NAudio Capture
-            AudioCallback audioCallback = new AudioCallback(ref waveInEvent, waveInEvent.WaveFormat.BitsPerSample, ref bufferedWaveProvider);
+            NAudioCompatibileAudioCallback audioCallback = new NAudioCompatibileAudioCallback(ref bufferedWaveProvider);
             //var audioStreamCallback = AudioInputStream.CreatePullStream(audioCallback, AudioStreamFormat.GetDefaultInputFormat());
             var audioStreamCallback = AudioInputStream.CreatePullStream(audioCallback,
                                                                         AudioStreamFormat.GetWaveFormatPCM((uint)waveInEvent.WaveFormat.SampleRate, 
@@ -137,31 +137,20 @@ namespace Monotone
         }
     }
 
-    public class AudioCallback : PullAudioInputStreamCallback
+    /// <summary>
+    /// Implementation of <see cref="PullAudioInputStreamCallback"/> that is compatible with <see cref="NAudio"/>
+    /// </summary>
+    public class NAudioCompatibileAudioCallback : PullAudioInputStreamCallback
     {
-        WaveInEvent waveInEvent;
         BufferedWaveProvider bufferedWaveProvider;
-        byte[] dataBuffer;
-        uint size;
 
-        public AudioCallback(ref WaveInEvent waveInEvent, int bufferSize, ref BufferedWaveProvider bufferedWaveProvider)
+        /// <summary>
+        /// Instantiate an instance of <see cref="NAudioCompatibileAudioCallback"/>
+        /// </summary>
+        /// <param name="bufferedWaveProvider">A Reference to an instance of <see cref="BufferedWaveProvider"/> storing</param>
+        public NAudioCompatibileAudioCallback(ref BufferedWaveProvider bufferedWaveProvider)
         {
-            bufferSize *= 100;
-
             this.bufferedWaveProvider = bufferedWaveProvider;
-            this.waveInEvent = waveInEvent;
-            this.size = (uint)bufferSize;
-            this.dataBuffer = new byte[bufferSize];
-
-            Array.Clear(dataBuffer, 0, bufferSize);
-
-            //waveInEvent.DataAvailable += (s, a) =>
-            //{
-            //    dataBuffer = a.Buffer;
-            //    //dataBuffer = Enumerable.Repeat(0, a.BytesRecorded).Select(i => new Random().Next(0, 255)).ToArray().Select(i => (byte)i).ToArray();
-
-            //    size = (uint)a.BytesRecorded;
-            //};
         }
 
         public override int Read(byte[] dataBuffer, uint size)

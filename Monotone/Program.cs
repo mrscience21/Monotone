@@ -14,16 +14,16 @@ namespace Monotone
         [STAThread]
         static void Main(string[] args)
         {
-            //Application.EnableVisualStyles();
-            //Application.SetCompatibleTextRenderingDefault(false);
-            //Application.Run(new Form1());
+            Application.EnableVisualStyles();
+            Application.SetCompatibleTextRenderingDefault(false);
+            Application.Run(new Form1());
 
-            var alpha = new TestFile3();
+            //var alpha = new TestFile3();
 
-            alpha.testFunc();
+            //alpha.testFunc();
 
-            Console.WriteLine("\nProgram Complete. Press any key to continue...");
-            Console.ReadKey();
+            //Console.WriteLine("\nProgram Complete. Press any key to continue...");
+            //Console.ReadKey();
         }
     }
 }

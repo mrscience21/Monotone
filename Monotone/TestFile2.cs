@@ -10,7 +10,6 @@ namespace Monotone
     class TestFile2
     {
         private WaveFileWriter fileWriter;
-        private string fileName;
 
         public void testFunc()
         {
