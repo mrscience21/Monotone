@@ -37,7 +37,17 @@ namespace Monotone
         /// <summary>
         /// Current Time Index For Audio Recording and Playback
         /// </summary>
-        public DateTime TimeIndex { set; get; }
+        public TimeSpan TimeIndex
+        {
+            set
+            {
+                timeIndex_label.Text = value.ToString(@"hh\:mm\:ss");
+            }
+            get
+            {
+                return TimeSpan.Parse(timeIndex_label.Text);
+            }
+        }
         #endregion
 
         #region Event Delegates and Instantiations

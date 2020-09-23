@@ -14,7 +14,7 @@ namespace Monotone
         public async void testFunc()
         {
             // Define Output Path and Create a new WaveInEvent
-            var outputFilePath = @"C:\Users\Joe\source\repos\Monotone\Monotone\bin\x64\Debug\audio.wav";
+            var outputFilePath = @"C:\Users\Joe\source\repos\Monotone\Monotone\bin\x86\Debug x86\audio.wav";
             var waveInEvent = new WaveInEvent();
             waveInEvent.DeviceNumber = 0;
 

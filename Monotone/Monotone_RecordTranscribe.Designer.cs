@@ -189,12 +189,12 @@
             this.timeIndex_label.BackColor = System.Drawing.Color.White;
             this.audioControls_tableLayoutPanel.SetColumnSpan(this.timeIndex_label, 2);
             this.timeIndex_label.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.timeIndex_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.timeIndex_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.timeIndex_label.Location = new System.Drawing.Point(3, 65);
             this.timeIndex_label.Name = "timeIndex_label";
             this.timeIndex_label.Size = new System.Drawing.Size(120, 30);
             this.timeIndex_label.TabIndex = 2;
-            this.timeIndex_label.Text = "00:00:00:000";
+            this.timeIndex_label.Text = "00:00:00";
             this.timeIndex_label.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // rewind_button
@@ -336,8 +336,8 @@
         private System.Windows.Forms.Button rewind_button;
         private System.Windows.Forms.Button fastforward_button;
         private System.Windows.Forms.TrackBar audio_trackBar;
-        private NAudio.Gui.WaveViewer audio_waveViewer;
         private System.Windows.Forms.TextBox entryTitle_textBox;
         public System.Windows.Forms.RichTextBox transcript_richTextBox;
+        public NAudio.Gui.WaveViewer audio_waveViewer;
     }
 }

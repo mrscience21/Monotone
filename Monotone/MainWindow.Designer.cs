@@ -28,12 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.window_tableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.window_menuStrip = new System.Windows.Forms.MenuStrip();
             this.file_ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.quit_ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.window_splitContainer = new System.Windows.Forms.SplitContainer();
             this.monotone_RecordTranscribe1 = new Monotone.Monotone_RecordTranscribe();
+            this.timeIndex_timer = new System.Windows.Forms.Timer(this.components);
             this.window_tableLayoutPanel.SuspendLayout();
             this.window_menuStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.window_splitContainer)).BeginInit();
@@ -79,7 +81,7 @@
             // quit_ToolStripMenuItem
             // 
             this.quit_ToolStripMenuItem.Name = "quit_ToolStripMenuItem";
-            this.quit_ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.quit_ToolStripMenuItem.Size = new System.Drawing.Size(97, 22);
             this.quit_ToolStripMenuItem.Text = "Quit";
             this.quit_ToolStripMenuItem.ToolTipText = "Exit the application";
             this.quit_ToolStripMenuItem.Click += new System.EventHandler(this.quit_ToolStripMenuItem_Click);
@@ -105,7 +107,7 @@
             this.monotone_RecordTranscribe1.Name = "monotone_RecordTranscribe1";
             this.monotone_RecordTranscribe1.Size = new System.Drawing.Size(500, 430);
             this.monotone_RecordTranscribe1.TabIndex = 0;
-            this.monotone_RecordTranscribe1.TimeIndex = new System.DateTime(((long)(0)));
+            this.monotone_RecordTranscribe1.TimeIndex = new System.TimeSpan(0, 0, 0, 0, 0);
             // 
             // MainWindow
             // 
@@ -135,6 +137,7 @@
         private System.Windows.Forms.ToolStripMenuItem quit_ToolStripMenuItem;
         private System.Windows.Forms.SplitContainer window_splitContainer;
         private Monotone_RecordTranscribe monotone_RecordTranscribe1;
+        private System.Windows.Forms.Timer timeIndex_timer;
     }
 }
 
