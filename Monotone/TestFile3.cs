@@ -30,7 +30,7 @@ namespace Monotone
             speechConfig.OutputFormat = OutputFormat.Detailed;
 
             // Set-Up Audio Configuration using Audio Callback method for NAudio Capture
-            NAudioCompatibileAudioCallback audioCallback = new NAudioCompatibileAudioCallback(ref bufferedWaveProvider);
+            NAudioCompatibileAudioCallback1 audioCallback = new NAudioCompatibileAudioCallback1(ref bufferedWaveProvider);
             //var audioStreamCallback = AudioInputStream.CreatePullStream(audioCallback, AudioStreamFormat.GetDefaultInputFormat());
             var audioStreamCallback = AudioInputStream.CreatePullStream(audioCallback,
                                                                         AudioStreamFormat.GetWaveFormatPCM((uint)waveInEvent.WaveFormat.SampleRate, 
@@ -140,15 +140,15 @@ namespace Monotone
     /// <summary>
     /// Implementation of <see cref="PullAudioInputStreamCallback"/> that is compatible with <see cref="NAudio"/>
     /// </summary>
-    public class NAudioCompatibileAudioCallback : PullAudioInputStreamCallback
+    public class NAudioCompatibileAudioCallback1 : PullAudioInputStreamCallback
     {
         BufferedWaveProvider bufferedWaveProvider;
 
         /// <summary>
-        /// Instantiate an instance of <see cref="NAudioCompatibileAudioCallback"/>
+        /// Instantiate an instance of <see cref="NAudioCompatibileAudioCallback1"/>
         /// </summary>
         /// <param name="bufferedWaveProvider">A Reference to an instance of <see cref="BufferedWaveProvider"/> storing</param>
-        public NAudioCompatibileAudioCallback(ref BufferedWaveProvider bufferedWaveProvider)
+        public NAudioCompatibileAudioCallback1(ref BufferedWaveProvider bufferedWaveProvider)
         {
             this.bufferedWaveProvider = bufferedWaveProvider;
         }

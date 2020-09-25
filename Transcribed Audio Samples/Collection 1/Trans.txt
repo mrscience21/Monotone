@@ -1,0 +1,12 @@
+Sample_0.wav	The United States Congress or U.S. Congress is the bicameral legislature of the federal government of the United States and consists of two chambers: the House of Representatives and the Senate.
+Sample_1.wav	The Congress meets in the United States Capitol in Washington, D.C.
+Sample_2.wav	Both senators and representatives are chosen through direct election, though vacancies in the Senate may be filled by a governor's appointment.
+Sample_3.wav	Congress has 535 voting members: 435 representatives and 100 senators.
+Sample_4.wav	In addition, the House of Representatives currently has six non-voting members, bringing the total membership of the US Congress to 541[1] or fewer in the case of vacancies.
+Sample_5.wav	The sitting of a congress is for a two-year term, presently beginning every other January; thus, the current congress is the 116th.
+Sample_6.wav	Elections are held every even-numbered year on Election Day.
+Sample_7.wav	The members of the House of Representatives are elected for the two-year term of a congress representing the people of a single constituency, known as a district.
+Sample_8.wav	Congressional districts are apportioned to states by population using the United States Census results, provided that each state has at least one congressional representative.
+Sample_9.wav	Each state, regardless of population or size, has two senators.
+Sample_10.wav	Currently, there are 100 senators representing the 50 states.
+Sample_11.wav	Each senator is elected at-large in their state for a six-year term, with terms staggered, so every two years approximately one-third of the Senate is up for election.

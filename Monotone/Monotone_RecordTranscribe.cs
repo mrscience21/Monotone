@@ -50,6 +50,16 @@ namespace Monotone
         }
         #endregion
 
+        /// <summary>
+        /// <see cref="List{T}"/> containing individual Lines and their associated Time Stamps from the current entry
+        /// </summary>
+        public List<EntryLine> EntryLines { set; get; } = new List<EntryLine>();
+
+        /// <summary>
+        /// Number of lines present in the current entry; See also <seealso cref="EntryLine"/>
+        /// </summary>
+        public int EntryLineCount { private set; get; } = 0;
+
         #region Event Delegates and Instantiations
         /// <summary>
         /// Defines Event Handeler for <see cref="StartRecording"/>
@@ -130,6 +140,13 @@ namespace Monotone
         public Monotone_RecordTranscribe()
         {
             InitializeComponent();
+
+            entry_dataGridView.Columns.Add("Column1", "Time Stamp");
+            entry_dataGridView.Columns.Add("Column2", "Text");
+            entry_dataGridView.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            entry_dataGridView.Columns[0].MinimumWidth = 100;
+            entry_dataGridView.Columns[0].Width = 100;
+            entry_dataGridView.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
         }
 
         /// <summary>
@@ -208,6 +225,37 @@ namespace Monotone
             }
 
             play_button_toggle = !play_button_toggle;
+        }
+
+        /// <summary>
+        /// Adds Text and a corresponding Time Stamp for a single Entry Line to <see cref="entry_dataGridView"/>
+        /// </summary>
+        /// <param name="Text">Entry Line Text</param>
+        /// <param name="TimeStamp">Entry Line Time Stamp</param>
+        public void AddEntryLine(string Text, TimeSpan TimeStamp)
+        {
+            if (entry_dataGridView.InvokeRequired)
+            {
+                entry_dataGridView.Invoke(new Action<string, TimeSpan>(AddEntryLine), Text, TimeStamp);
+            }
+            else
+            {
+                //EntryLines.Add(new EntryLine(Text, TimeStamp));
+
+                entry_dataGridView.Rows.Add(1);
+                entry_dataGridView.Rows[EntryLineCount].Selected = true;
+                entry_dataGridView.CurrentCell = entry_dataGridView.Rows[EntryLineCount].Cells[0];
+                entry_dataGridView.BeginEdit(true);
+
+                entry_dataGridView.Rows[EntryLineCount].Cells[0].Value = TimeStamp.ToString(@"hh\:mm\:ss");
+                entry_dataGridView.Rows[EntryLineCount].Cells[1].Value = Text;
+
+                entry_dataGridView.EndEdit();
+                entry_dataGridView.Update();
+                entry_dataGridView.Refresh();
+
+                EntryLineCount++;
+            }
         }
     }
 }

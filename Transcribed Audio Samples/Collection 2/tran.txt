@@ -1,0 +1,11 @@
+sample_0.wav	Article One of the United States Constitution states, "All legislative Powers herein granted shall be vested in a Congress of the United States, which shall consist of a Senate and House of Representatives."
+sample_1.wav	The House and Senate are equal partners in the legislative process—legislation cannot be enacted without the consent of both chambers.
+sample_2.wav	However, the Constitution grants each chamber some unique powers.
+sample_3.wav	The Senate ratifies treaties and approves presidential appointments while the House initiates revenue-raising bills.
+sample_4.wav	The House initiates impeachment cases, while the Senate decides impeachment cases.
+sample_5.wav	A two-thirds vote of the Senate is required before an impeached person can be removed from office.
+sample_6.wav	The term Congress can also refer to a particular meeting of the legislature.
+sample_7.wav	A Congress covers two years; the current one, the 116th Congress, began on January 3, 2019, and will end on January 3, 2021.
+sample_8.wav	The Congress starts and ends on the third day of January of every odd-numbered year.
+sample_9.wav	Members of the Senate are referred to as senators.
+sample_10.wav	Scholar and representative Lee H. Hamilton asserted that the "historic mission of Congress has been to maintain freedom" and insisted it was a "driving force in American government"[3] and a "remarkably resilient institution."

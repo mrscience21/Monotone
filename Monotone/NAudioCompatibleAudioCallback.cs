@@ -14,14 +14,17 @@ namespace Monotone
     public class NAudioCompatibleAudioCallback : PullAudioInputStreamCallback
     {
         BufferedWaveProvider bufferedWaveProvider;
+        private object lockObject;
 
         /// <summary>
         /// Instantiate an instance of <see cref="NAudioCompatibileAudioCallback"/>
         /// </summary>
         /// <param name="bufferedWaveProvider">A Reference to an instance of <see cref="BufferedWaveProvider"/> storing</param>
-        public NAudioCompatibleAudioCallback(ref BufferedWaveProvider bufferedWaveProvider)
+        /// <param name="lockObject">An object usable for establishing a mutex lock in a multithreaded application</param>
+        public NAudioCompatibleAudioCallback(ref BufferedWaveProvider bufferedWaveProvider, ref object lockObject)
         {
             this.bufferedWaveProvider = bufferedWaveProvider;
+            this.lockObject = lockObject;
         }
 
         /// <summary>
@@ -32,7 +35,10 @@ namespace Monotone
         /// <returns></returns>
         public override int Read(byte[] dataBuffer, uint size)
         {
-            return bufferedWaveProvider.Read(dataBuffer, 0, dataBuffer.Length);
+            lock (lockObject)
+            {
+                return bufferedWaveProvider.Read(dataBuffer, 0, dataBuffer.Length);
+            }
         }
     }
 }

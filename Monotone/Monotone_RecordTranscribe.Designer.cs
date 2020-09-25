@@ -43,15 +43,14 @@
             this.audio_waveViewer = new NAudio.Gui.WaveViewer();
             this.entryTitle_textBox = new System.Windows.Forms.TextBox();
             this.newFile_button = new System.Windows.Forms.Button();
-            this.transcriptControl_tableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
-            this.transcript_richTextBox = new System.Windows.Forms.RichTextBox();
+            this.entry_dataGridView = new System.Windows.Forms.DataGridView();
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.control_tableLayoutPanel.SuspendLayout();
             this.audioSourceAndControl_tableLayoutPanel.SuspendLayout();
             this.audioControlData_tableLayoutPanel.SuspendLayout();
             this.audioControls_tableLayoutPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.audio_trackBar)).BeginInit();
-            this.transcriptControl_tableLayoutPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.entry_dataGridView)).BeginInit();
             this.SuspendLayout();
             // 
             // control_tableLayoutPanel
@@ -59,7 +58,7 @@
             this.control_tableLayoutPanel.ColumnCount = 1;
             this.control_tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.control_tableLayoutPanel.Controls.Add(this.audioSourceAndControl_tableLayoutPanel, 0, 0);
-            this.control_tableLayoutPanel.Controls.Add(this.transcriptControl_tableLayoutPanel, 0, 1);
+            this.control_tableLayoutPanel.Controls.Add(this.entry_dataGridView, 0, 1);
             this.control_tableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.control_tableLayoutPanel.Location = new System.Drawing.Point(0, 0);
             this.control_tableLayoutPanel.Name = "control_tableLayoutPanel";
@@ -269,30 +268,14 @@
             this.newFile_button.Text = "New File";
             this.newFile_button.UseVisualStyleBackColor = true;
             // 
-            // transcriptControl_tableLayoutPanel
+            // entry_dataGridView
             // 
-            this.transcriptControl_tableLayoutPanel.ColumnCount = 2;
-            this.transcriptControl_tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
-            this.transcriptControl_tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 400F));
-            this.transcriptControl_tableLayoutPanel.Controls.Add(this.transcript_richTextBox, 1, 0);
-            this.transcriptControl_tableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.transcriptControl_tableLayoutPanel.Location = new System.Drawing.Point(0, 150);
-            this.transcriptControl_tableLayoutPanel.Margin = new System.Windows.Forms.Padding(0);
-            this.transcriptControl_tableLayoutPanel.Name = "transcriptControl_tableLayoutPanel";
-            this.transcriptControl_tableLayoutPanel.RowCount = 1;
-            this.transcriptControl_tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.transcriptControl_tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 550F));
-            this.transcriptControl_tableLayoutPanel.Size = new System.Drawing.Size(500, 550);
-            this.transcriptControl_tableLayoutPanel.TabIndex = 2;
-            // 
-            // transcript_richTextBox
-            // 
-            this.transcript_richTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.transcript_richTextBox.Location = new System.Drawing.Point(103, 3);
-            this.transcript_richTextBox.Name = "transcript_richTextBox";
-            this.transcript_richTextBox.Size = new System.Drawing.Size(394, 544);
-            this.transcript_richTextBox.TabIndex = 3;
-            this.transcript_richTextBox.Text = "";
+            this.entry_dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.entry_dataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.entry_dataGridView.Location = new System.Drawing.Point(3, 153);
+            this.entry_dataGridView.Name = "entry_dataGridView";
+            this.entry_dataGridView.Size = new System.Drawing.Size(494, 544);
+            this.entry_dataGridView.TabIndex = 2;
             // 
             // openFileDialog
             // 
@@ -314,7 +297,7 @@
             this.audioControls_tableLayoutPanel.ResumeLayout(false);
             this.audioControls_tableLayoutPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.audio_trackBar)).EndInit();
-            this.transcriptControl_tableLayoutPanel.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.entry_dataGridView)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -325,7 +308,6 @@
         private System.Windows.Forms.TableLayoutPanel audioSourceAndControl_tableLayoutPanel;
         private System.Windows.Forms.Button browse_button;
         private System.Windows.Forms.Label filePath_label;
-        private System.Windows.Forms.TableLayoutPanel transcriptControl_tableLayoutPanel;
         private System.Windows.Forms.OpenFileDialog openFileDialog;
         private System.Windows.Forms.TableLayoutPanel audioControlData_tableLayoutPanel;
         private System.Windows.Forms.TableLayoutPanel audioControls_tableLayoutPanel;
@@ -337,7 +319,7 @@
         private System.Windows.Forms.Button fastforward_button;
         private System.Windows.Forms.TrackBar audio_trackBar;
         private System.Windows.Forms.TextBox entryTitle_textBox;
-        public System.Windows.Forms.RichTextBox transcript_richTextBox;
         public NAudio.Gui.WaveViewer audio_waveViewer;
+        public System.Windows.Forms.DataGridView entry_dataGridView;
     }
 }

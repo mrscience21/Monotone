@@ -22,13 +22,15 @@ namespace Monotone
         WaveFileWriter AudioFileWriter;
         WaveFileReader AudioFileReader;
 
-        NAudioCompatibileAudioCallback Azure_NAudio_Callback;
+        NAudioCompatibleAudioCallback Azure_NAudio_Callback;
         SpeechRecognizer AzureSpeechRecognizer;
         TaskCompletionSource<int> Azure_StopRecognition;
 
         Thread AzureSpeechAudioThread;
 
         Stopwatch timeIndex_Stopwatch;
+
+        private object BufferedAudioProvider_LockObject = new object();
 
         public MainWindow()
         {
@@ -62,14 +64,19 @@ namespace Monotone
             EventBasedAudio = new WaveInEvent();
             EventBasedAudio.DeviceNumber = deviceNumber;
 
-            BufferedAudioProvider = new BufferedWaveProvider(EventBasedAudio.WaveFormat);
-            //BufferedAudioProvider.BufferDuration = TimeSpan.FromSeconds(8);
+            EventBasedAudio.WaveFormat = WaveFormat.CreateCustomFormat(WaveFormatEncoding.Pcm, 8000, 1, 32000, 2, 16);
 
-            Azure_NAudio_Callback = new NAudioCompatibileAudioCallback(ref BufferedAudioProvider);
+            BufferedAudioProvider = new BufferedWaveProvider(EventBasedAudio.WaveFormat);
+            BufferedAudioProvider.BufferDuration = TimeSpan.FromSeconds(1);
+
+            Azure_NAudio_Callback = new NAudioCompatibleAudioCallback(ref BufferedAudioProvider, ref BufferedAudioProvider_LockObject);
 
             EventBasedAudio.DataAvailable += (s, e) => 
             {
-                BufferedAudioProvider.AddSamples(e.Buffer, 0, e.BytesRecorded);
+                lock (BufferedAudioProvider_LockObject)
+                {
+                    BufferedAudioProvider.AddSamples(e.Buffer, 0, e.BytesRecorded);
+                }
             };
         }
 
@@ -79,7 +86,7 @@ namespace Monotone
         /// <param name="subscriptionKey">Valid Azure Subscription Key</param>
         /// <param name="subscriptionRegion">Valid Azure Subscription Region</param>
         /// <param name="CallbackFunction">Audio Source Callback Function</param>
-        private void Initialize_AzureSpeech(string subscriptionKey, string subscriptionRegion, NAudioCompatibileAudioCallback CallbackFunction)
+        private void Initialize_AzureSpeech(string subscriptionKey, string subscriptionRegion, NAudioCompatibleAudioCallback CallbackFunction)
         {
             // If SpeechRecognizer is already initialized, dispose
             if(AzureSpeechRecognizer != null)
@@ -117,16 +124,8 @@ namespace Monotone
             {
                 if (e.Result.Reason == ResultReason.RecognizedSpeech)
                 {
-                    var bar = SpeechRecognitionResultExtensions.Best(e.Result);
-                    var bar_select = bar.Where(q => q.Confidence == bar.Select(t => t.Confidence).Max()).First();
-                    //RichTextBoxAppend(bar_select.NormalizedForm + $"({bar_select.Confidence})");
-
-                    foreach (DetailedSpeechRecognitionResult rslt in bar)
-                    {
-                        RichTextBoxAppend(rslt.Text + $"({rslt.Confidence})\n");
-                    }
-                    RichTextBoxAppend("\n" + bar_select.Text + $"({bar_select.Confidence})\n");
-                    RichTextBoxAppend(e.Result.Text + "\n\n\n");
+                    monotone_RecordTranscribe1.AddEntryLine(e.Result.Text, (timeIndex_Stopwatch.Elapsed - e.Result.Duration) );
+                    
                 }
             };
 
@@ -134,9 +133,8 @@ namespace Monotone
             {
                 if (e.Reason == CancellationReason.Error)
                 {
-                    MessageBox.Show($"Azure Speech Recognition Error {e.ErrorCode}",
-                                    $"Canceled due to Error {e.ErrorCode}\n\n" + $"Details: {e.ErrorDetails}\n\n" + $"Did you update your subscription info?",
-                                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show($"Canceled due to Error {e.ErrorCode}\n\n" + $"Details: {e.ErrorDetails}\n\n" + $"Did you update your subscription info?",
+                                    $"Azure Speech Recognition Error {e.ErrorCode}", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
 
                 StopRecording(this, new EventArgs());
@@ -187,9 +185,10 @@ namespace Monotone
             timeIndex_timer.Start();
         }
 
-        private void StopRecording(object sender, EventArgs eventArgs)
+        private async void StopRecording(object sender, EventArgs eventArgs)
         {
             Azure_StopRecognition.TrySetResult(0);
+            await AzureSpeechRecognizer.StopContinuousRecognitionAsync();
 
             EventBasedAudio.StopRecording();
 
@@ -203,21 +202,9 @@ namespace Monotone
         {
             // Start Continuous Recognition
             await AzureSpeechRecognizer.StartContinuousRecognitionAsync();
-
+            
             // Waits for completion. Task.WaitAny keeps the task rooted
             Task.WaitAny(new[] { Azure_StopRecognition.Task });
-        }
-
-        private void RichTextBoxAppend(string text)
-        {
-            if (monotone_RecordTranscribe1.transcript_richTextBox.InvokeRequired)
-            {
-                monotone_RecordTranscribe1.transcript_richTextBox.Invoke(new Action<string>(RichTextBoxAppend), text);
-            }
-            else
-            {
-                monotone_RecordTranscribe1.transcript_richTextBox.AppendText(text);
-            }
         }
     }
 }
