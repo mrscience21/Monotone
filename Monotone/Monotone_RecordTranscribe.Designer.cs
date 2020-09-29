@@ -42,7 +42,7 @@
             this.audio_trackBar = new System.Windows.Forms.TrackBar();
             this.audio_waveViewer = new NAudio.Gui.WaveViewer();
             this.entryTitle_textBox = new System.Windows.Forms.TextBox();
-            this.newFile_button = new System.Windows.Forms.Button();
+            this.newSaveFile_button = new System.Windows.Forms.Button();
             this.entry_dataGridView = new System.Windows.Forms.DataGridView();
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.control_tableLayoutPanel.SuspendLayout();
@@ -77,7 +77,7 @@
             this.audioSourceAndControl_tableLayoutPanel.Controls.Add(this.browse_button, 1, 0);
             this.audioSourceAndControl_tableLayoutPanel.Controls.Add(this.filePath_label, 0, 0);
             this.audioSourceAndControl_tableLayoutPanel.Controls.Add(this.audioControlData_tableLayoutPanel, 0, 1);
-            this.audioSourceAndControl_tableLayoutPanel.Controls.Add(this.newFile_button, 2, 0);
+            this.audioSourceAndControl_tableLayoutPanel.Controls.Add(this.newSaveFile_button, 2, 0);
             this.audioSourceAndControl_tableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.audioSourceAndControl_tableLayoutPanel.Location = new System.Drawing.Point(0, 0);
             this.audioSourceAndControl_tableLayoutPanel.Margin = new System.Windows.Forms.Padding(0);
@@ -112,7 +112,6 @@
             this.filePath_label.Padding = new System.Windows.Forms.Padding(3, 0, 3, 0);
             this.filePath_label.Size = new System.Drawing.Size(350, 25);
             this.filePath_label.TabIndex = 1;
-            this.filePath_label.Text = "label1";
             this.filePath_label.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // audioControlData_tableLayoutPanel
@@ -255,18 +254,18 @@
             this.entryTitle_textBox.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.entryTitle_textBox.Size = new System.Drawing.Size(500, 28);
             this.entryTitle_textBox.TabIndex = 1;
-            this.entryTitle_textBox.Text = "A Sample Entry Title";
             // 
-            // newFile_button
+            // newSaveFile_button
             // 
-            this.newFile_button.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.newFile_button.Location = new System.Drawing.Point(425, 0);
-            this.newFile_button.Margin = new System.Windows.Forms.Padding(0);
-            this.newFile_button.Name = "newFile_button";
-            this.newFile_button.Size = new System.Drawing.Size(75, 25);
-            this.newFile_button.TabIndex = 3;
-            this.newFile_button.Text = "New File";
-            this.newFile_button.UseVisualStyleBackColor = true;
+            this.newSaveFile_button.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.newSaveFile_button.Location = new System.Drawing.Point(425, 0);
+            this.newSaveFile_button.Margin = new System.Windows.Forms.Padding(0);
+            this.newSaveFile_button.Name = "newSaveFile_button";
+            this.newSaveFile_button.Size = new System.Drawing.Size(75, 25);
+            this.newSaveFile_button.TabIndex = 3;
+            this.newSaveFile_button.Text = "New File";
+            this.newSaveFile_button.UseVisualStyleBackColor = true;
+            this.newSaveFile_button.Click += new System.EventHandler(this.newSaveFile_button_Click);
             // 
             // entry_dataGridView
             // 
@@ -314,7 +313,7 @@
         private System.Windows.Forms.Button record_button;
         private System.Windows.Forms.Button play_button;
         private System.Windows.Forms.Label timeIndex_label;
-        private System.Windows.Forms.Button newFile_button;
+        private System.Windows.Forms.Button newSaveFile_button;
         private System.Windows.Forms.Button rewind_button;
         private System.Windows.Forms.Button fastforward_button;
         private System.Windows.Forms.TrackBar audio_trackBar;

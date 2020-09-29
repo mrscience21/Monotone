@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainWindow));
             this.window_tableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.window_menuStrip = new System.Windows.Forms.MenuStrip();
             this.file_ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -101,13 +102,14 @@
             // 
             // monotone_RecordTranscribe1
             // 
+            this.monotone_RecordTranscribe1.AudioControlsEnabled = false;
             this.monotone_RecordTranscribe1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.monotone_RecordTranscribe1.FilePath = "label1";
             this.monotone_RecordTranscribe1.Location = new System.Drawing.Point(0, 0);
             this.monotone_RecordTranscribe1.Name = "monotone_RecordTranscribe1";
             this.monotone_RecordTranscribe1.Size = new System.Drawing.Size(500, 430);
             this.monotone_RecordTranscribe1.TabIndex = 0;
-            this.monotone_RecordTranscribe1.TimeIndex = new System.TimeSpan(0, 0, 0, 0, 0);
+            this.monotone_RecordTranscribe1.TimeIndex = System.TimeSpan.Parse("00:00:00");
             // 
             // MainWindow
             // 
@@ -115,6 +117,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 461);
             this.Controls.Add(this.window_tableLayoutPanel);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.window_menuStrip;
             this.Name = "MainWindow";
             this.Text = "Monotone";

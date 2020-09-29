@@ -9,6 +9,7 @@ namespace Monotone
     /// <summary>
     /// Object representng a single line of an Entry
     /// </summary>
+    [Serializable]
     public class EntryLine
     {
         /// <summary>

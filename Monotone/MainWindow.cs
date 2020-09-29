@@ -9,6 +9,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Diagnostics;
+using System.IO;
 using Microsoft.CognitiveServices.Speech;
 using Microsoft.CognitiveServices.Speech.Audio;
 using NAudio.Wave;
@@ -32,6 +33,8 @@ namespace Monotone
 
         private object BufferedAudioProvider_LockObject = new object();
 
+        private string temporaryDirectoryPath = string.Empty;
+
         public MainWindow()
         {
             InitializeComponent();
@@ -43,6 +46,8 @@ namespace Monotone
 
             monotone_RecordTranscribe1.StartRecording += StartRecording;
             monotone_RecordTranscribe1.StopRecording += StopRecording;
+            monotone_RecordTranscribe1.CreateNewFile += CreateNewFile;
+            monotone_RecordTranscribe1.SaveFile += SaveFile;
 
             AzureSpeechAudioThread = new Thread(new ThreadStart(AzureAudioThreadProcess));
         }
@@ -76,6 +81,11 @@ namespace Monotone
                 lock (BufferedAudioProvider_LockObject)
                 {
                     BufferedAudioProvider.AddSamples(e.Buffer, 0, e.BytesRecorded);
+                }
+
+                if (AudioFileWriter != null)
+                {
+                    AudioFileWriter.Write(e.Buffer, 0, e.BytesRecorded);
                 }
             };
         }
@@ -196,6 +206,24 @@ namespace Monotone
 
             timeIndex_Stopwatch.Stop();
             timeIndex_Stopwatch.Reset();
+        }
+
+        private void CreateNewFile(object sender, MonotoneFileEventArgs eventArgs)
+        {
+            temporaryDirectoryPath = MonotoneFileHandler.CreateTempDirectory(eventArgs.FilePath);
+
+            AudioFileWriter = new WaveFileWriter(temporaryDirectoryPath + "\\audio.wav", EventBasedAudio.WaveFormat);
+        }
+
+        private void SaveFile(object sender, MonotoneFileEventArgs eventArgs)
+        {
+            AudioFileWriter?.Dispose();
+            AudioFileWriter = null;
+
+            MonotoneFileHandler.WriteFile(eventArgs.FilePath, monotone_RecordTranscribe1.GetEntryLines());
+
+            MonotoneFileHandler.DeleteTempDirectory(eventArgs.FilePath);
+            temporaryDirectoryPath = string.Empty;
         }
 
         private async void AzureAudioThreadProcess()
